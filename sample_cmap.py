@@ -10,11 +10,9 @@ URL = 'https://matplotlib.org/stable/tutorials/colors/colormaps.html'
 
 
 def main(args):
-    colors = plt.get_cmap(args.cmap).colors
-    indices = np.linspace(0, len(colors) - 1, num=args.n_colors)
-    for i in indices:
-        i = int(np.round(i))
-        print(to_hex(colors[i]))
+    cmap = plt.get_cmap(args.cmap)
+    for x in np.linspace(0, 1, num=args.n_colors):
+        print(to_hex(cmap(x), keep_alpha=False))
 
 
 if __name__ == '__main__':
