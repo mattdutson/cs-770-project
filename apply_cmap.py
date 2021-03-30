@@ -23,11 +23,11 @@ def main(args):
     cmap = plt.get_cmap(args.cmap)
     x = np.linspace(0, 1, num=len(cell_divs))
 
-    for i, cell_div in enumerate(cell_divs):
+    for cell_div in cell_divs:
+        in_div = cell_div.find('div', 'jp-InputPrompt')
+        i = int(in_div.string[4:-2]) - 1
         color_hex = to_hex(cmap(x[i], alpha=args.alpha), keep_alpha=True)
         style = 'background-color: {}'.format(color_hex)
-
-        in_div = cell_div.find('div', 'jp-InputPrompt')
         in_div['style'] = style
 
         out_div = cell_div.find('div', 'jp-OutputPrompt')
