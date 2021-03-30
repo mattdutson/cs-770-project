@@ -1,0 +1,47 @@
+This is a test for your cognitive skills and speed. In the following pages, you will be shown Jupyter notebooks and asked to answer questions about their output. Read the notebook and answer the question as quickly as you can without sacrificing correctness. Your timing for each response with be noted. Please do not use calculators or other digital tools for calculations. Write the value of x for every problem as the answer.
+
+
+Name
+Title of problem
+Description
+
+
+
+countPrimes.ipynb
+Number of Primes
+Count the number of primes between two numbers.
+
+
+sumOfNumbers.ipynb
+Sum of Series
+Calculate the sum of a series.
+
+
+conversion.ipynb
+Metric Conversion
+Convert miles per hour to meters per second.
+
+
+distance.ipynb
+Distance Travelled
+Calculate the distance travelled by an object in constant acceleration.
+
+
+gcd.ipynb
+Greatest Common Divisor (GCD)
+Compute the greatest common devisor of two numbers.
+
+
+factorial.ipynb
+Factorial
+Compute the factorial of a large number.
+
+
+surfaceAreaOfCube.ipynb
+Surface Area of Cube
+Calculate the surface area of a cube.
+
+
+largestPower2.ipynb
+Larget Power of 2
+Compute the largest number that is a power of 2 and smaller than a.
