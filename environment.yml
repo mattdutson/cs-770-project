@@ -1,5 +1,6 @@
 channels:
   - defaults
 dependencies:
+  - beautifulsoup4  # Required by apply_cmap.py
   - jupyter
-  - matplotlib
+  - matplotlib      # Required by apply_cmap.py and sample_cmap.py

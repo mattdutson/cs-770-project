@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import to_hex
 
-URL = 'https://matplotlib.org/stable/tutorials/colors/colormaps.html'
-
 
 def main(args):
     cmap = plt.get_cmap(args.cmap)
@@ -20,8 +18,9 @@ if __name__ == '__main__':
 
     parser.add_argument(
         'cmap',
-        help='name of a Matplotlib color map (see {} for a list of '
-             'options)'.format(URL))
+        help='name of a Matplotlib color map (see '
+             'https://matplotlib.org/stable/tutorials/colors/colormaps.html'
+             'for a list of options)')
     parser.add_argument(
         'n_colors', type=int,
         help='number of colors to sample from the color map')
