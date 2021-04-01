@@ -3,6 +3,8 @@ This is a test of your cognitive skills and speed. In the following pages, you w
 Name
 Title of problem
 Description
+In-order answer
+Out-of-order answer
 
 countPrimes.ipynb
 Number of Primes
@@ -19,14 +21,20 @@ Convert miles per hour to meters per second.
 distance.ipynb
 Distance Travelled
 Calculate the distance travelled by an object in constant acceleration.
+24
+5.5
 
 gcd.ipynb
 Greatest Common Divisor (GCD)
 Compute the greatest common divisor of two numbers.
+1
+3
 
 factorial.ipynb
 Factorial
 Compute the factorial of a large number.
+720
+2
 
 surfaceAreaOfCube.ipynb
 Surface Area of Cube
