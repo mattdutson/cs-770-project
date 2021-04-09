@@ -14258,10 +14258,10 @@ all of MD as it is not optimized for dense, information rich UIs.
      <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
       <div class="CodeMirror cm-s-jupyter">
        <div class="highlight hl-ipython3">
-        <pre><span></span><span class="c1"># Computes distance travelled by an object with initial speed (s)</span>
+        <pre><span></span><span class="c1"># Computes distance travelled by an object with zero initial speed</span>
 <span class="c1"># and constant acceleration (a) in time (t)</span>
-<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span>
 </pre>
        </div>
       </div>
@@ -14278,9 +14278,8 @@ all of MD as it is not optimized for dense, information rich UIs.
      <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
       <div class="CodeMirror cm-s-jupyter">
        <div class="highlight hl-ipython3">
-        <pre><span></span><span class="n">speed</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">acceleration</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">time</span> <span class="o">=</span> <span class="mi">2</span>
+        <pre><span></span><span class="n">acceleration</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">4</span>
 </pre>
        </div>
       </div>
@@ -14297,7 +14296,7 @@ all of MD as it is not optimized for dense, information rich UIs.
      <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
       <div class="CodeMirror cm-s-jupyter">
        <div class="highlight hl-ipython3">
-        <pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+        <pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">acceleration</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -14328,7 +14327,7 @@ all of MD as it is not optimized for dense, information rich UIs.
        Out[4]:
       </div>
       <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-       <pre>22.0</pre>
+       <pre>8.0</pre>
       </div>
      </div>
     </div>
@@ -14358,7 +14357,7 @@ all of MD as it is not optimized for dense, information rich UIs.
        Out[5]:
       </div>
       <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-       <pre>11.0</pre>
+       <pre>2.0</pre>
       </div>
      </div>
     </div>
@@ -14373,9 +14372,8 @@ all of MD as it is not optimized for dense, information rich UIs.
      <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
       <div class="CodeMirror cm-s-jupyter">
        <div class="highlight hl-ipython3">
-        <pre><span></span><span class="n">speed</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">acceleration</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">time</span> <span class="o">=</span> <span class="mi">4</span>
+        <pre><span></span><span class="n">acceleration</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">2</span>
 </pre>
        </div>
       </div>
@@ -14392,7 +14390,7 @@ all of MD as it is not optimized for dense, information rich UIs.
      <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
       <div class="CodeMirror cm-s-jupyter">
        <div class="highlight hl-ipython3">
-        <pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+        <pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">acceleration</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
 </pre>
        </div>
       </div>

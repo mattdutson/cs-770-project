@@ -21,8 +21,8 @@ Convert miles per hour to meters per second.
 distance.ipynb
 Distance Travelled
 Calculate the distance travelled by an object in constant acceleration.
-24
-5.5
+3
+4
 
 gcd.ipynb
 Greatest Common Divisor (GCD)
