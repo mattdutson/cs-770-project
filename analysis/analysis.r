@@ -46,12 +46,23 @@ describe(oo_time)
 describeBy(io_accuracy, io$Computer.science.experience)
 describeBy(io_accuracy, io$Jupyter.notebook.experience)
 
+describeBy(io_time, io$Computer.science.experience)
+describeBy(io_time, io$Jupyter.notebook.experience)
+
 # INFERENTIAL STATISTICS
 
 # Is there a difference between in-order and out-of-order accuracy?
 t.test(
   oo_accuracy,
   io_accuracy,
+  alternative="less",
+  paired=TRUE,
+  conf.level=0.95)
+
+# Is there a difference between in-order and out-of-order time?
+t.test(
+  io_time,
+  oo_time,
   alternative="less",
   paired=TRUE,
   conf.level=0.95)
@@ -81,6 +92,13 @@ boxplot(
   names=c("In-order", "Out-of-order"),
   ylab="Accuracy")
 
+# Compare timing distributions between in-order and out-of-order.
+boxplot(
+  io_time,
+  oo_time,
+  names=c("In-order", "Out-of-order"),
+  ylab="Time")
+
 # Compare in-order accuracy distributions over Jupyter experience.
 boxplot(
   subset(io_accuracy, io$Jupyter.notebook.experience=="<1 year"),
@@ -89,3 +107,12 @@ boxplot(
   names=c("<1 year", "1-3 years", ">3 years"),
   xlab="Jupyter experience",
   ylab="Accuracy")
+
+# Compare in-order timing distributions over Jupyter experience.
+boxplot(
+  subset(io_time, io$Jupyter.notebook.experience=="<1 year"),
+  subset(io_time, io$Jupyter.notebook.experience=="1-3 years"),
+  subset(io_time, io$Jupyter.notebook.experience==">3 years"),
+  names=c("<1 year", "1-3 years", ">3 years"),
+  xlab="Jupyter experience",
+  ylab="Time")

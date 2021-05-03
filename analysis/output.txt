@@ -1,0 +1,226 @@
+> library(psych)
+> 
+> # DATA PREPROCESSING
+> 
+> data <- read.csv("data.csv")
+> 
+> v_1 <- subset(data, Variant=="First in-order")
+> v_2 <- subset(data, Variant=="First out-of-order")
+> 
+> combined_names <- c(
++   "Q1.Answer", "Q1.Time", "Q1.Correct",
++   "Q2.Answer", "Q2.Time", "Q2.Correct",
++   "Q3.Answer", "Q3.Time", "Q3.Correct",
++   "Q4.Answer", "Q4.Time", "Q4.Correct")
+> 
+> # Create a table containing results for in-order questions.
+> io_1 <- cbind(
++   v_1[1:2], v_1[3:5], v_1[ 9:11], v_1[15:17], v_1[21:23], v_1[27:29])
+> io_2 <- cbind(
++   v_2[1:2], v_2[6:8], v_2[12:14], v_2[18:20], v_2[24:26], v_2[27:29])
+> names(io_1)[3:14] <- combined_names
+> names(io_2)[3:14] <- combined_names
+> io <- rbind(io_1, io_2)
+> 
+> # Create a table containing results for out-of-order questions.
+> oo_1 <- cbind(
++   v_1[1:2], v_1[6:8], v_1[12:14], v_1[18:20], v_1[24:26], v_1[27:29])
+> oo_2 <- cbind(
++   v_2[1:2], v_2[3:5], v_2[ 9:11], v_2[15:17], v_2[21:23], v_2[27:29])
+> names(oo_1)[3:14] <- combined_names
+> names(oo_2)[3:14] <- combined_names
+> oo <- rbind(oo_1, oo_2)
+> 
+> # DESCRIPTIVE STATISTICS
+> 
+> io_accuracy <- rowMeans(cbind(io[5], io[8], io[11], io[14]))
+> describe(io_accuracy)
+   vars  n mean   sd median trimmed mad min max range skew kurtosis   se
+X1    1 20 0.91 0.15      1    0.94   0 0.5   1   0.5 -1.3     0.58 0.03
+> oo_accuracy <- rowMeans(cbind(oo[5], oo[8], oo[11], oo[14]))
+> describe(oo_accuracy)
+   vars  n mean sd median trimmed mad min max range skew kurtosis se
+X1    1 20    0  0      0       0   0   0   0     0  NaN      NaN  0
+> 
+> io_time <- rowMeans(cbind(io[4], io[7], io[10], io[13]))
+> describe(io_time)
+   vars  n  mean   sd median trimmed   mad   min   max range skew kurtosis   se
+X1    1 20 34.86 11.7  32.16   33.78 10.69 17.17 66.98 49.81  0.9     0.45 2.62
+> oo_time <- rowMeans(cbind(oo[4], oo[7], oo[10], oo[13]))
+> describe(oo_time)
+   vars  n  mean    sd median trimmed   mad   min    max  range skew kurtosis   se
+X1    1 20 54.73 44.42  47.56   46.62 20.94 17.84 229.62 211.78 2.97     9.08 9.93
+> 
+> describeBy(io_accuracy, io$Computer.science.experience)
+
+ Descriptive statistics by group 
+group: <1 year
+   vars n mean sd median trimmed mad min max range skew kurtosis se
+X1    1 2    1  0      1       1   0   1   1     0  NaN      NaN  0
+-------------------------------------------------------------------------------------- 
+group: >3 years
+   vars  n mean   sd median trimmed mad min max range  skew kurtosis   se
+X1    1 17 0.91 0.15      1    0.93   0 0.5   1   0.5 -1.33     0.59 0.04
+-------------------------------------------------------------------------------------- 
+group: 1-3 years
+   vars n mean sd median trimmed mad  min  max range skew kurtosis se
+X1    1 1 0.75 NA   0.75    0.75   0 0.75 0.75     0   NA       NA NA
+> describeBy(io_accuracy, io$Jupyter.notebook.experience)
+
+ Descriptive statistics by group 
+group: <1 year
+   vars n mean   sd median trimmed  mad min max range  skew kurtosis   se
+X1    1 5  0.8 0.21   0.75     0.8 0.37 0.5   1   0.5 -0.25    -1.82 0.09
+-------------------------------------------------------------------------------------- 
+group: >3 years
+   vars n mean   sd median trimmed mad  min max range  skew kurtosis   se
+X1    1 9 0.94 0.11      1    0.94   0 0.75   1  0.25 -1.12     -0.8 0.04
+-------------------------------------------------------------------------------------- 
+group: 1-3 years
+   vars n mean  sd median trimmed mad  min max range  skew kurtosis   se
+X1    1 6 0.96 0.1      1    0.96   0 0.75   1  0.25 -1.36    -0.08 0.04
+> 
+> describeBy(io_time, io$Computer.science.experience)
+
+ Descriptive statistics by group 
+group: <1 year
+   vars n  mean    sd median trimmed   mad   min   max range skew kurtosis    se
+X1    1 2 37.47 15.15  37.47   37.47 15.88 26.76 48.18 21.42    0    -2.75 10.71
+-------------------------------------------------------------------------------------- 
+group: >3 years
+   vars  n  mean    sd median trimmed  mad   min   max range skew kurtosis   se
+X1    1 17 34.57 12.14  29.74   33.57 7.85 17.17 66.98 49.81 0.95      0.5 2.94
+-------------------------------------------------------------------------------------- 
+group: 1-3 years
+   vars n  mean sd median trimmed mad   min   max range skew kurtosis se
+X1    1 1 34.58 NA  34.58   34.58   0 34.58 34.58     0   NA       NA NA
+> describeBy(io_time, io$Jupyter.notebook.experience)
+
+ Descriptive statistics by group 
+group: <1 year
+   vars n  mean    sd median trimmed  mad   min   max range skew kurtosis   se
+X1    1 5 43.08 15.12  37.05   43.08 12.5 28.62 66.98 38.36 0.57    -1.56 6.76
+-------------------------------------------------------------------------------------- 
+group: >3 years
+   vars n  mean   sd median trimmed  mad   min   max range skew kurtosis   se
+X1    1 9 29.53 7.15  26.98   29.53 3.68 24.45 46.23 21.78 1.32     0.44 2.38
+-------------------------------------------------------------------------------------- 
+group: 1-3 years
+   vars n mean    sd median trimmed  mad   min   max range  skew kurtosis   se
+X1    1 6   36 11.64  40.51      36 7.42 17.17 45.71 28.54 -0.56    -1.62 4.75
+> 
+> # INFERENTIAL STATISTICS
+> 
+> # Is there a difference between in-order and out-of-order accuracy?
+> t.test(
++   oo_accuracy,
++   io_accuracy,
++   alternative="less",
++   paired=TRUE,
++   conf.level=0.95)
+
+	Paired t-test
+
+data:  oo_accuracy and io_accuracy
+t = -27.801, df = 19, p-value < 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.8557459
+sample estimates:
+mean of the differences 
+                -0.9125 
+
+> 
+> # Is there a difference between in-order and out-of-order time?
+> t.test(
++   io_time,
++   oo_time,
++   alternative="less",
++   paired=TRUE,
++   conf.level=0.95)
+
+	Paired t-test
+
+data:  io_time and oo_time
+t = -2.0882, df = 19, p-value = 0.02524
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -3.417327
+sample estimates:
+mean of the differences 
+              -19.87439 
+
+> 
+> # Does the use of a colormap improve in-order accuracy?
+> t.test(
++   subset(io_accuracy, io$Interface=="Default"),
++   subset(io_accuracy, io$Interface=="Colormap"),
++   alternative="less",
++   paired=FALSE,
++   conf.level=0.95)
+
+	Welch Two Sample t-test
+
+data:  subset(io_accuracy, io$Interface == "Default") and subset(io_accuracy, io$Interface == "Colormap")
+t = -0.3721, df = 16.848, p-value = 0.3572
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf 0.09193718
+sample estimates:
+mean of x mean of y 
+    0.900     0.925 
+
+> 
+> # Does the use of a colormap improve in-order time?
+> t.test(
++   subset(io_time, io$Interface=="Colormap"),
++   subset(io_time, io$Interface=="Default"),
++   alternative="less",
++   paired=FALSE,
++   conf.level=0.95)
+
+	Welch Two Sample t-test
+
+data:  subset(io_time, io$Interface == "Colormap") and subset(io_time, io$Interface == "Default")
+t = -0.54542, df = 14.822, p-value = 0.2968
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+    -Inf 6.44716
+sample estimates:
+mean of x mean of y 
+ 33.40505  36.31358 
+
+> 
+> # PLOTS
+> 
+> # Compare accuracy distributions between in-order and out-of-order.
+> boxplot(
++   io_accuracy,
++   oo_accuracy,
++   names=c("In-order", "Out-of-order"),
++   ylab="Accuracy")
+> 
+> # Compare timing distributions between in-order and out-of-order.
+> boxplot(
++   io_time,
++   oo_time,
++   names=c("In-order", "Out-of-order"),
++   ylab="Time")
+> 
+> # Compare in-order accuracy distributions over Jupyter experience.
+> boxplot(
++   subset(io_accuracy, io$Jupyter.notebook.experience=="<1 year"),
++   subset(io_accuracy, io$Jupyter.notebook.experience=="1-3 years"),
++   subset(io_accuracy, io$Jupyter.notebook.experience==">3 years"),
++   names=c("<1 year", "1-3 years", ">3 years"),
++   xlab="Jupyter experience",
++   ylab="Accuracy")
+> 
+> # Compare in-order timing distributions over Jupyter experience.
+> boxplot(
++   subset(io_time, io$Jupyter.notebook.experience=="<1 year"),
++   subset(io_time, io$Jupyter.notebook.experience=="1-3 years"),
++   subset(io_time, io$Jupyter.notebook.experience==">3 years"),
++   names=c("<1 year", "1-3 years", ">3 years"),
++   xlab="Jupyter experience",
++   ylab="Time")
